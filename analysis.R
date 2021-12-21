@@ -27,11 +27,13 @@ most_common_1_to_1 <- route_frequency %>% mutate(ratio_casual_to_member = round(
   filter(casual != 0 ) %>%
   filter(member != 0) %>%
   filter(ratio_casual_to_member != 0) %>%
-  filter(abs(ratio_casual_to_member) > .90) %>% 
-  filter(abs(ratio_casual_to_member) < 1.10) %>%
+  filter(abs(ratio_casual_to_member) > .79) %>% 
+  filter(abs(ratio_casual_to_member) < 1.25) %>%
   select(-ratio_casual_to_member) %>%
   arrange(desc(casual),desc(member))
 
 #You can visualize this in rpivotTable(optional)
 rpivotTable(route_frequency)
+
+top_ten <- most_common_1_to_1[1:10,]
 
